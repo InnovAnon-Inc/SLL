@@ -1,0 +1,9 @@
+[submodule "m4"]
+	path = m4
+	url = https://github.com/InnovAnon-Inc/m4-common
+[submodule "glitter"]
+	path = glitter
+	url = https://github.com/InnovAnon-Inc/glitter.git
+[submodule "MultiMalloc"]
+	path = MultiMalloc
+	url = https://github.com/InnovAnon-Inc/MultiMalloc.git
