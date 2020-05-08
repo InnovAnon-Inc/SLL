@@ -1,5 +1,5 @@
-include $(top_srcdir)/swap/src/Makefile-LIBADD.inc
-include $(top_srcdir)/MultiMalloc/src/Makefile-LIBADD.inc
+#include $(top_srcdir)/swap/src/Makefile-LIBADD.inc
+#include $(top_srcdir)/MultiMalloc/src/Makefile-LIBADD.inc
 
 if USE_SUBMODULES
 LIBSLL_LIBADD  =
