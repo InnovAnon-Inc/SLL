@@ -29,10 +29,12 @@ __attribute__ ((leaf, nonnull (1, 3), nothrow)) ;
 void init_sll_node (sll_node_t *restrict sll,
 	sll_node_t /*const*/ *restrict next)
 __attribute__ ((leaf, nonnull (1), nothrow)) ;
+/*
 void init_sll_node2 (sll_node_t *restrict sll,
-	sll_node_t /*const*/ *restrict next,
+	sll_node_t /*const* / *restrict next,
 	void *restrict data, size_t esz)
 __attribute__ ((nonnull (1, 3), nothrow)) ;
+*/
 /*
 sll_node_t *alloc_sll_node (sll_node_t /*const* / *restrict next,
 	size_t esz)
@@ -43,11 +45,11 @@ __attribute__ ((nothrow, warn_unused_result)) ;
 sll_node_t *alloc_sll_node2 (sll_node_t /*const*/ *restrict next,
 	size_t esz)
 __attribute__ ((nothrow, warn_unused_result)) ;
-
-sll_node_t *alloc_sll_node3 (sll_node_t /*const*/ *restrict next,
+/*
+sll_node_t *alloc_sll_node3 (sll_node_t /*const* / *restrict next,
 	void *restrict data, size_t esz)
 __attribute__ ((nonnull (2), nothrow, warn_unused_result)) ;
-
+*/
 void setNext_sll_node (sll_node_t *restrict sll,
 	sll_node_t /*const*/ *restrict next)
 __attribute__ ((leaf, nonnull (1), nothrow)) ;

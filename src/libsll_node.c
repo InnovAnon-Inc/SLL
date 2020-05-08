@@ -29,6 +29,16 @@ void init_sll_node (sll_node_t *restrict sll,
 	sll_node_t /*const*/ *restrict next) {
 	sll->next = next;
 }
+/*
+__attribute__ ((nonnull (1, 3), nothrow))
+void init_sll_node2 (sll_node_t *restrict sll,
+        sll_node_t /*const* / *restrict next,
+        void *restrict data, size_t esz) {
+   init_sll_node (sll, next);
+   sll->data = data;
+   sll->esz  = esz;
+}
+*/
 
 __attribute__ ((nothrow, warn_unused_result))
 sll_node_t *alloc_sll_node (sll_node_t *restrict next) {
@@ -61,14 +71,15 @@ sll_node_t *alloc_sll_node2 (sll_node_t /*const*/ *restrict next,
 	return (sll_node_t *) caq;
 }
 
+/*
 __attribute__ ((nonnull (2), nothrow, warn_unused_result))
-sll_node_t *alloc_sll_node3 (sll_node_t /*const*/ *restrict next,
+sll_node_t *alloc_sll_node3 (sll_node_t /*const* / *restrict next,
 	void *restrict data, size_t esz) {
 	void *restrict *restrict combined[2];
 	size_t eszs[2];
-	/*sll_node_t *restrict caq;*/
+	/*sll_node_t *restrict caq;* /
         void *restrict caq;
-	/*void *restrict data;*/
+	/*void *restrict data;* /
 
 	eszs[0] = sizeof (sll_node_t);
 	eszs[1] = esz;
@@ -81,7 +92,7 @@ sll_node_t *alloc_sll_node3 (sll_node_t /*const*/ *restrict next,
 	init_sll_node2 ((sll_node_t *) caq, next, data, esz);
 	return (sll_node_t *) caq;
 }
-
+*/
 __attribute__ ((leaf, nonnull (1), nothrow))
 void setNext_sll_node (sll_node_t *restrict sll,
 	sll_node_t /*const*/ *restrict next) {
