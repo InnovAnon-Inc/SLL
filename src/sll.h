@@ -8,6 +8,7 @@ extern "C" {
 #include <stdbool.h>
 #include <sys/types.h>
 
+#include <darr.h>
 #include <dsint.h>
 #include <glitter.h>
 
@@ -19,6 +20,12 @@ typedef struct {
    size_t esz;
    size_t n;
 } sll_t;
+
+bool isempty_sll (sll_t *restrict sll)
+__attribute ((const, leaf, nothrow, warn_unused_result));
+
+bool hasone_sll (sll_t *restrict sll)
+__attribute ((const, leaf, nothrow, warn_unused_result));
 
 size_t sll_nodesz (size_t esz)
 __attribute__ ((const, leaf, nothrow, warn_unused_result)) ;
@@ -139,7 +146,7 @@ __attribute__ ((leaf, nonnull (1, 2), nothrow)) ;
 void removes_rear_sll (sll_t *restrict sll,
    void *restrict e, size_t n)
 __attribute__ ((leaf, nonnull (1, 2), nothrow)) ;
-
+/*
 void remove_front_darr (darr_t *restrict darr, size_t i,
    void *restrict e)
 __attribute__ ((leaf, nonnull (1, 3), nothrow)) ;
@@ -200,7 +207,7 @@ __attribute__ ((leaf, nonnull (1), nothrow, pure, returns_nonnull, warn_unused_r
 
 void frees_darr (darr_t const *restrict darr, free_t cb)
 __attribute__ ((leaf, nonnull (1, 2), nothrow)) ;
-
+*/
 #ifdef __cplusplus
 }
 #endif

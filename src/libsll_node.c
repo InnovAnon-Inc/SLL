@@ -13,12 +13,12 @@
 #include <swap.h>
 
 #include <sll_node.h>
-
+/*
 __attribute__ ((const, leaf, nothrow, warn_unused_result))
 size_t sll_nodesz (void) {
 	return sizeof (sll_node_t);
 }
-
+*/
 __attribute__ ((const, leaf, nothrow, warn_unused_result))
 size_t sll_nodesz2 (size_t esz) {
 	return sizeof (sll_node_t) + esz;

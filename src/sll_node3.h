@@ -40,10 +40,10 @@ void setNext_sll_node3 (sll_node3_t *restrict sll,
 __attribute__ ((leaf, nonnull (1), nothrow)) ;
 
 sll_node3_t *getNext_sll_node3 (sll_node3_t const *restrict sll)
-__attribute__ ((leaf, nonnull (1), nothrow, warn_unused_result)) ;
+__attribute__ ((leaf, nonnull (1), nothrow, pure, warn_unused_result)) ;
 
 bool hasNext_sll_node3 (sll_node3_t const *restrict sll)
-__attribute__ ((leaf, nonnull (1), nothrow, warn_unused_result)) ;
+__attribute__ ((leaf, nonnull (1), nothrow, pure, warn_unused_result)) ;
 
 void setData_sll_node3 (sll_node3_t *restrict sll,
 	void *restrict data, size_t esz)
@@ -54,7 +54,7 @@ void setData_sll_node4 (sll_node3_t *restrict sll,
 __attribute__ ((leaf, nonnull (1, 2), nothrow)) ;
 
 void *getData_sll_node3 (sll_node3_t const *restrict sll)
-__attribute__ ((leaf, nonnull (1), nothrow, warn_unused_result)) ;
+__attribute__ ((leaf, nonnull (1), nothrow, pure, warn_unused_result)) ;
 
 void getData_sll_node4 (sll_node3_t const *restrict sll,
 	void *restrict data)
@@ -62,10 +62,12 @@ __attribute__ ((leaf, nonnull (1, 2), nothrow)) ;
 
 void free_sll_node3 (sll_node3_t *restrict sll, free_t f)
 __attribute__ ((leaf, nonnull (1, 2), nothrow)) ;
-
+/*
 void free_sll_node4 (sll_node_t *restrict sll)
 __attribute__ ((leaf, nonnull (1), nothrow)) ;
-
+*/
+void free_sll_node4 (sll_node3_t *restrict sll)
+__attribute__ ((leaf, nonnull (1), nothrow)) ;
 #ifdef __cplusplus
 }
 #endif

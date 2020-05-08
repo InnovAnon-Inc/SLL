@@ -15,10 +15,10 @@ typedef struct sll_node {
 	struct sll_node *restrict next;
 	void *restrict data;
 } sll_node_t;
-
+/*
 size_t sll_nodesz (void)
 __attribute__ ((const, leaf, nothrow, warn_unused_result)) ;
-
+*/
 size_t sll_nodesz2 (size_t esz)
 __attribute__ ((const, leaf, nothrow, warn_unused_result)) ;
 /*

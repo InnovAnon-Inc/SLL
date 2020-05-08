@@ -6,6 +6,10 @@
 #define __STDC_VERSION__ 200112L
 
 #include <assert.h>
+#include <limits.h>
+#ifndef NDEBUG
+#include <stdio.h>
+#endif
 #include <stdlib.h>
 #include <string.h>
 
@@ -13,6 +17,18 @@
 #include <swap.h>
 
 #include <sll.h>
+
+__attribute ((const, leaf, nothrow, warn_unused_result))
+bool isempty_sll (sll_t *restrict sll) {
+   bool ret = sll->head == NULL;
+   assert (sll->tail == NULL);
+   return ret;
+}
+
+__attribute ((const, leaf, nothrow, warn_unused_result))
+bool hasone_sll (sll_t *restrict sll) {
+   return ! isempty_sll (sll) && sll->head == sll->tail;
+}
 
 __attribute__ ((const, leaf, nothrow, warn_unused_result))
 size_t sll_nodesz (size_t esz) {
@@ -41,7 +57,8 @@ void init_sll (sll_t *restrict sll, size_t esz) {
 
 __attribute__ ((leaf, nonnull (1, 2), nothrow))
 void insert_rear_sll (sll_t *restrict sll, void const *restrict e) {
-	sll_node *restrict node = alloc_sll_node (sll->esz);
+	/*sll_node *restrict node = alloc_sll_node (sll->esz);*/
+	sll_node_t *restrict node = alloc_sll_node2 (NULL, sll->esz);
 	if (isempty_sll (sll))
 		sll->head = node;
 	else if (hasone_sll (sll))
@@ -52,6 +69,7 @@ void insert_rear_sll (sll_t *restrict sll, void const *restrict e) {
 	sll->n++;
 }
 
+#ifdef WTFDARR
 __attribute__ ((nonnull (1, 2), nothrow, warn_unused_result))
 int ez_insert_rear_darr (darr_t *restrict darr, void const *restrict e) {
    error_check (ensure_cap_darr (darr, darr->n + 1) != 0) return -1;
@@ -436,7 +454,7 @@ void frees_darr (darr_t const *restrict darr, free_t f) {
    init_array2 (&tmp, &(darr->array), (size_t) 0, darr->n);
    frees_array (&tmp, f);
 }
-
+#endif
 
 
 
