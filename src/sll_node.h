@@ -65,7 +65,7 @@ void setData_sll_node2 (sll_node_t *restrict sll,
 __attribute__ ((leaf, nonnull (1, 2), nothrow)) ;
 
 __attribute__ ((leaf, nonnull (1), nothrow))
-void free_sll_node (sll_node_t *restrict sll)
+void free_sll_node (sll_node_t *restrict sll, free_t f)
 __attribute__ ((leaf, nonnull (1, 2), nothrow)) ;
 
 void free_sll_node2 (sll_node_t *restrict sll)
