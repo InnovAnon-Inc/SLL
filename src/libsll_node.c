@@ -32,7 +32,8 @@ void init_sll_node (sll_node_t *restrict sll,
 
 __attribute__ ((nothrow, warn_unused_result))
 sll_node_t *alloc_sll_node (sll_node_t *restrict next) {
-	sll_node_t *restrict ret = alloc (sizeof (sll_node_t));
+	/*sll_node_t *restrict ret = alloc (sizeof (sll_node_t));*/
+	sll_node_t *restrict ret = malloc (sizeof (sll_node_t));
 	error_check (ret == NULL) return NULL;
 	init_sll_node (ret, next);
 	return ret;
@@ -61,13 +62,13 @@ sll_node_t *alloc_sll_node2 (sll_node_t /*const*/ *restrict next,
 }
 
 __attribute__ ((nonnull (2), nothrow, warn_unused_result))
-sll_node_t *alloc_sll_node2 (sll_node_t /*const*/ *restrict next,
+sll_node_t *alloc_sll_node3 (sll_node_t /*const*/ *restrict next,
 	void *restrict data, size_t esz) {
 	void *restrict *restrict combined[2];
 	size_t eszs[2];
 	/*sll_node_t *restrict caq;*/
         void *restrict caq;
-	void *restrict data;
+	/*void *restrict data;*/
 
 	eszs[0] = sizeof (sll_node_t);
 	eszs[1] = esz;
@@ -87,12 +88,12 @@ void setNext_sll_node (sll_node_t *restrict sll,
 	sll->next = next;
 }
 
-__attribute__ ((leaf, nonnull (1), nothrow, warn_unused_result))
+__attribute__ ((leaf, nonnull (1), nothrow, pure, warn_unused_result))
 sll_node_t *getNext_sll_node (sll_node_t *restrict sll) {
 	return sll->next;
 }
 
-__attribute__ ((leaf, nonnull (1), nothrow, warn_unused_result))
+__attribute__ ((leaf, nonnull (1), nothrow, pure, warn_unused_result))
 bool hasNext_sll_node (sll_node_t *restrict sll) {
 	return sll->next == NULL;
 }
@@ -109,17 +110,17 @@ void setData_sll_node2 (sll_node_t *restrict sll,
 	(void) memcpy (sll->data, data, esz);
 }
 
-__attribute__ ((leaf, nonnull (1), nothrow, warn_unused_result))
+__attribute__ ((leaf, nonnull (1), nothrow, pure, warn_unused_result))
 void *getData_sll_node (sll_node_t *restrict sll) {
 	return sll->data;
 }
-
+/*
 __attribute__ ((leaf, nonnull (1, 2), nothrow))
 void setData_sll_node2 (sll_node_t *restrict sll,
 	void *restrict data, size_t esz) {
 	(void) memcpy (data, sll->data, esz);
 }
-
+*/
 __attribute__ ((leaf, nonnull (1, 2), nothrow))
 void free_sll_node (sll_node_t *restrict sll, free_t f) {
 	f (sll->data);

@@ -34,7 +34,8 @@ void init_sll_node3 (sll_node3_t *restrict sll,
 __attribute__ ((nothrow, warn_unused_result))
 sll_node3_t *alloc_sll_node3 (sll_node3_t *restrict next,
 	size_t esz) {
-	sll_node3_t *restrict ret = alloc (sizeof (sll_node3_t));
+	/*sll_node3_t *restrict ret = alloc (sizeof (sll_node3_t));*/
+	sll_node3_t *restrict ret = malloc (sizeof (sll_node3_t));
 	error_check (ret == NULL) return NULL;
 	init_sll_node3 (next, esz);
 	return ret;
@@ -45,20 +46,21 @@ sll_node3_t *alloc_sll_node4 (sll_node3_t *restrict next,
 	size_t esz) {
 	void *restrict *restrict combined[2];
 	size_t eszs[2];
-	sll_node3_t *restrict caq;
+	/*sll_node3_t *restrict caq;*/
+	void *restrict caq;
 	void *restrict data;
 
 	eszs[0] = sizeof (sll_node3_t);
 	eszs[1] = esz;
-	combined[0] = (void *restrict *restrict) &caq;
-	combined[1] = (void *restrict *restrict) &data;
+	combined[0] = &caq;
+	combined[1] = &data;
 	error_check (mmalloc2 (combined, eszs,
 		eszs[0] + eszs[1], ARRSZ (eszs)) != 0)
 		return NULL;
 
-	init_sll_node3 (caq, next, esz);
-	caq->data = data;
-	return caq;
+	init_sll_node3 ((sll_node3_t *) caq, next, esz);
+	((sll_node3_t *) caq)->data = data;
+	return (sll_node3_t *) caq;
 }
 
 __attribute__ ((leaf, nonnull (1), nothrow))
