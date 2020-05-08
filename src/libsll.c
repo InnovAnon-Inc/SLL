@@ -60,11 +60,14 @@ void insert_rear_sll (sll_t *restrict sll, void const *restrict e) {
 	/*sll_node *restrict node = alloc_sll_node (sll->esz);*/
 	sll_node_t *restrict node = alloc_sll_node2 (NULL, sll->esz);
 	if (isempty_sll (sll))
-		sll->head = node;
-	else if (hasone_sll (sll))
+		/*sll->head = node;*/
+		sll->head = sll->tail = node;
+	/*else if (hasone_sll (sll))
 		setNext_sll_node (sll->head, node);
-	else
+	else */{
+                assert (sll->tail != NULL);
 		setNext_sll_node (sll->tail, node);
+        }
 	sll->tail = node;
 	sll->n++;
 }

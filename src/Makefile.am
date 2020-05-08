@@ -1,15 +1,15 @@
 AM_CPPFLAGS = -D__STDC_INT64__
 
-if USE_SUBMODULES
-SUBDIRS = ../glitter
-AM_CPPFLAGS += -I $(top_srcdir)/glitter/src
-
-#SUBDIRS += ../swap
-#AM_CPPFLAGS += -I $(top_srcdir)/swap/src
-
-SUBDIRS += ../MultiMalloc
-AM_CPPFLAGS += -I $(top_srcdir)/MultiMalloc/src
-endif
+#if USE_SUBMODULES
+#SUBDIRS = ../glitter
+#AM_CPPFLAGS += -I $(top_srcdir)/glitter/src
+#
+##SUBDIRS += ../swap
+##AM_CPPFLAGS += -I $(top_srcdir)/swap/src
+#
+#SUBDIRS += ../MultiMalloc
+#AM_CPPFLAGS += -I $(top_srcdir)/MultiMalloc/src
+#endif
 
 lib_LTLIBRARIES =
 include_HEADERS =
@@ -29,4 +29,4 @@ lib_LTLIBRARIES += libsll.la
 libsll_la_LIBADD = $(LIBSLL_LIBADD)
 include_HEADERS += sll.h
 bin_PROGRAMS += sll-test
-sll_test_LDADD = libsll.la $(LIBSLL_LIBADD)
+sll_test_LDADD = libsll.la $(LIBSLL_LIBADD) -larray
