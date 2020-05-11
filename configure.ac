@@ -31,7 +31,8 @@ AC_SUBST(LIBSLL_NODE_LIBADD)
 LIBSLL_NODE3_LIBADD="`PATH=src:$PATH libsll_node3_config --libs`"
 AC_SUBST(LIBSLL_NODE3_LIBADD)
 
-LIBSLL_LIBADD="libsll_node.la `PATH=src:$PATH libsll_config --libs`"
+#LIBSLL_LIBADD="libsll_node.la `PATH=src:$PATH libsll_config --libs`"
+LIBSLL_LIBADD="`PATH=src:$PATH libsll_config --libs`"
 AC_SUBST(LIBSLL_LIBADD)
 
 SLL_TEST_LIBADD="libsll.la libsll_node.la `PATH=src:$PATH sll_test_config --libs`"
