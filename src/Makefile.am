@@ -26,9 +26,11 @@ libsll_node3_la_LIBADD = $(LIBSLL_NODE3_LIBADD)
 include_HEADERS += sll_node3.h
 
 lib_LTLIBRARIES += libsll.la
-libsll_la_LIBADD = $(LIBSLL_LIBADD)
+#libsll_la_LIBADD = $(LIBSLL_LIBADD)
+libsll_la_LIBADD = libsll_node.la $(LIBSLL_NODE_LIBADD)
 include_HEADERS += sll.h
 #include ../../Array/src/Makefile-LIBADD.inc
 bin_PROGRAMS += sll-test
 #sll_test_LDADD = -lsll $(LIBSLL_LIBADD) -larray $(LIBARRAY_LIBADD)
-sll_test_LDADD = libsll.la $(LIBSLL_LIBADD) -larray $(LIBARRAY_LIBADD)
+#sll_test_LDADD = libsll.la $(LIBSLL_LIBADD) -larray $(LIBARRAY_LIBADD)
+sll_test_LDADD = libsll.la libsll_node.la -larray $(LIBARRAY_LIBADD)
