@@ -30,4 +30,5 @@ libsll_la_LIBADD = $(LIBSLL_LIBADD)
 include_HEADERS += sll.h
 #include ../../Array/src/Makefile-LIBADD.inc
 bin_PROGRAMS += sll-test
-sll_test_LDADD = libsll.la $(LIBSLL_LIBADD) -larray $(LIBARRAY_LIBADD)
+sll_test_LDADD = -lsll $(LIBSLL_LIBADD) -larray $(LIBARRAY_LIBADD)
+#sll_test_LDADD = libsll.la $(LIBSLL_LIBADD) -larray $(LIBARRAY_LIBADD)
