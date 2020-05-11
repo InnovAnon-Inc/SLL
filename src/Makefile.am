@@ -15,7 +15,8 @@ lib_LTLIBRARIES =
 include_HEADERS =
 bin_PROGRAMS    =
 
-include Makefile-LIBADD.inc
+#include Makefile-LIBADD.inc
+dist_bin_SCRIPTS = libsll_node_config libsll_node3_config libsll_config sll_test_config
 
 lib_LTLIBRARIES += libsll_node.la
 libsll_node_la_LIBADD = $(LIBSLL_NODE_LIBADD)
@@ -33,4 +34,5 @@ include_HEADERS += sll.h
 bin_PROGRAMS += sll-test
 #sll_test_LDADD = -lsll $(LIBSLL_LIBADD) -larray $(LIBARRAY_LIBADD)
 #sll_test_LDADD = libsll.la $(LIBSLL_LIBADD) -larray $(LIBARRAY_LIBADD)
-sll_test_LDADD = libsll.la libsll_node.la -larray $(LIBARRAY_LIBADD)
+#sll_test_LDADD = libsll.la libsll_node.la -larray $(LIBARRAY_LIBADD)
+sll_test_LDADD = $(SLL_TEST_LIBADD)
