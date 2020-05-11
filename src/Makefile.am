@@ -28,6 +28,6 @@ include_HEADERS += sll_node3.h
 lib_LTLIBRARIES += libsll.la
 libsll_la_LIBADD = $(LIBSLL_LIBADD)
 include_HEADERS += sll.h
-include ../Array/src/Makefile-LIBADD.inc
+include ../../Array/src/Makefile-LIBADD.inc
 bin_PROGRAMS += sll-test
 sll_test_LDADD = libsll.la $(LIBSLL_LIBADD) -larray $(LIBARRAY_LIBADD)
