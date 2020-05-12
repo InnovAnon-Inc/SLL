@@ -31,7 +31,7 @@ lib_LTLIBRARIES += libsll.la
 #libsll_la_LIBADD = $(LIBSLL_LIBADD)
 #libsll_la_LIBADD = libsll_node.la $(LIBSLL_NODE_LIBADD)
 libsll_la_LIBADD = @LIBSLL_LIBADD@
-EXTRA_libsll_la_DEPENDENCIES = libssl_node.la
+EXTRA_libsll_la_DEPENDENCIES = libsll_node.la
 include_HEADERS += sll.h
 #include ../../Array/src/Makefile-LIBADD.inc
 bin_PROGRAMS += sll-test
