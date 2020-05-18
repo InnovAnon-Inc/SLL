@@ -1,7 +1,0 @@
-#! /bin/bash
-set -eu
-[ $# -eq 1 ]
-[ $1 == --libs ]
-#libsll_node_config --libs
-echo -lsll_node `libsll_node_config --libs`
-
