@@ -9,8 +9,8 @@ AC_CONFIG_FILES([
  Makefile
  src/Makefile
  src/libsll.pc
- src/libssl_node.pc
- src/libssl_node3.pc
+ src/libsll_node.pc
+ src/libsll_node3.pc
  src/sll-test.pc
 ])
 
