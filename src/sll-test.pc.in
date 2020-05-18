@@ -1,0 +1,15 @@
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+libdir=@libdir@
+includedir=@includedir@
+
+sll_utility=sll-test
+
+Name: @PACKAGE_NAME@ test
+Description: sll library test application
+Version: @PACKAGE_VERSION@
+Libs: -L${libdir} -lsll -lsll_node
+Cflags: -I${includedir}
+Requires:
+Requires.private: libarray libmmalloc libsimon libswap
+

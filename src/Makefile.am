@@ -1,43 +1,27 @@
 AM_CPPFLAGS = -D__STDC_INT64__
 
-#if USE_SUBMODULES
-#SUBDIRS = ../glitter
-#AM_CPPFLAGS += -I $(top_srcdir)/glitter/src
-#
-##SUBDIRS += ../swap
-##AM_CPPFLAGS += -I $(top_srcdir)/swap/src
-#
-#SUBDIRS += ../MultiMalloc
-#AM_CPPFLAGS += -I $(top_srcdir)/MultiMalloc/src
-#endif
-
 lib_LTLIBRARIES =
 include_HEADERS =
 bin_PROGRAMS    =
 
-#include Makefile-LIBADD.inc
-dist_bin_SCRIPTS = libsll_node_config libsll_node3_config libsll_config sll_test_config
-
 lib_LTLIBRARIES += libsll_node.la
-#libsll_node_la_LIBADD = $(LIBSLL_NODE_LIBADD)
-libsll_node_la_LIBADD = @LIBSLL_NODE_LIBADD@
+libsll_node_la_CPPFLAGS = $(GLITTER_CFLAGS) $(SWAP_CFLAGS) $(MMALLOC_CFLAGS)
+libsll_node_la_LIBADD   = $(GLITTER_LIBS)   $(SWAP_LIBS)   $(MMALLOC_LIBS)
 include_HEADERS += sll_node.h
 
 lib_LTLIBRARIES += libsll_node3.la
-libsll_node3_la_LIBADD = @LIBSLL_NODE3_LIBADD@
+libsll_node3_la_CPPFLAGS = $(GLITTER_CFLAGS) $(SWAP_CFLAGS) $(MMALLOC_CFLAGS)
+libsll_node3_la_LIBADD   = $(GLITTER_LIBS)   $(SWAP_LIBS)   $(MMALLOC_LIBS)
 include_HEADERS += sll_node3.h
 
 lib_LTLIBRARIES += libsll.la
-#libsll_la_LIBADD = $(LIBSLL_LIBADD)
-#libsll_la_LIBADD = libsll_node.la $(LIBSLL_NODE_LIBADD)
-libsll_la_LIBADD = @LIBSLL_LIBADD@
+libsll_la_CPPFLAGS =            $(GLITTER_CFLAGS) $(DARR_CFLAGS) $(SWAP_CFLAGS) $(MMALLOC_CFLAGS)
+libsll_la_LIBADD   = -lsll_node $(GLITTER_LIBS)   $(DARR_LIBS)   $(SWAP_LIBS)   $(MMALLOC_LIBS)
 EXTRA_libsll_la_DEPENDENCIES = libsll_node.la
 include_HEADERS += sll.h
-#include ../../Array/src/Makefile-LIBADD.inc
+
 bin_PROGRAMS += sll-test
-#sll_test_LDADD = -lsll $(LIBSLL_LIBADD) -larray $(LIBARRAY_LIBADD)
-#sll_test_LDADD = libsll.la $(LIBSLL_LIBADD) -larray $(LIBARRAY_LIBADD)
-#sll_test_LDADD = libsll.la libsll_node.la -larray $(LIBARRAY_LIBADD)
-#sll_test_LDADD = $(SLL_TEST_LIBADD)
-sll_test_LDADD = @SLL_TEST_LIBADD@
+sll_test_CPPFLAGS =                  $(GLITTER_CFLAGS) $(ARRAY_CFLAGS) $(SIMON_CFLAGS) $(SWAP_CFLAGS) $(MMALLOC_CFLAGS)
+sll_test_LDADD    = -lsll -lsll_node $(GLITTER_LIBS)   $(ARRAY_LIBS)   $(SIMON_LIBS)   $(SWAP_LIBS)   $(MMALLOC_LIBS)
 EXTRA_sll_test_DEPENDENCIES = libsll.la
+

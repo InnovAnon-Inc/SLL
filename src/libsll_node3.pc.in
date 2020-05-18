@@ -1,0 +1,15 @@
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+libdir=@libdir@
+includedir=@includedir@
+
+#sll_utility=sll-test
+
+Name: @PACKAGE_NAME@-node3
+Description: sll library node3
+Version: @PACKAGE_VERSION@
+Libs: -L${libdir} -lsll_node3
+Cflags: -I${includedir}
+Requires: glitter 
+Requires.private: libswap libmmalloc
+
